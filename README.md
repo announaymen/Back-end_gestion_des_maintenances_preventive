@@ -48,7 +48,8 @@ node index.js
 
 ## Commands
 
-- GET: `curl http://localhost:3000/users`
-- POST:  http://localhost:3000/users`
-- PUT: " http://localhost:3000/users/1`
-- DELETE: `curl -X "DELETE" http://localhost:3000/users/1`
+- GET:  http://localhost:3000/users`    show you all users
+- GET:  http://localhost:3000/users/1`    show first user
+- POST:  http://localhost:3000/users with these body {name:aymen, email:ga_announ@esi.dz} ` add user
+- PUT: " http://localhost:3000/users/1 with these body {name:aymen, email:ga_announ@esi.dz}` edit the first user
+- DELETE: http://localhost:3000/users/1` delete the first user
