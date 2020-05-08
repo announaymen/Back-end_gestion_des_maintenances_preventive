@@ -1,10 +1,10 @@
 const Pool = require("pg").Pool;
 const pool = new Pool({
-  user: "me",
-  host: "localhost",
-  database: "api",
-  password: "openpgpwd",
-  port: 5433,
+  user: "duqnlvru",
+  host: "balarama.db.elephantsql.com",
+  database: "duqnlvru",
+  password: "Nr2MB7TkmKVyVJkEv68R7kp7tcGCzPHw",
+  port: 5432,
 });
 const getUsers = (request, response) => {
   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
