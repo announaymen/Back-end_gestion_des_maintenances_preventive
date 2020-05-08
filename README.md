@@ -40,8 +40,8 @@ INSERT INTO users (name, email)
 ## Installation
 
 ```bash
-git clone
-cd node-api-postgres
+git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git
+cd Back-end_gestion_des_maintenances_preventive
 npm install
 node index.js
 ```
