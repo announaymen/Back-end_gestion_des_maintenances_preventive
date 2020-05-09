@@ -14,7 +14,7 @@ node index.js
 
 - GET: http://localhost:3000/users` show you all users
 - GET: http://localhost:3000/users/1` show first user
-- POST: http://localhost:3000/auth with these body {name:aymen, email:ga_announ@esi.dz} => signed in or field according to the existing of the user
+- POST: http://localhost:3000/auth with these body {"email":"ga_announ@esi.dz", "password":"openpgpwd"} => signed in or field according to the existing of the user
 - POST: http://localhost:3000/users with these body {name:aymen, email:ga_announ@esi.dz} ` add user
 - PUT: " http://localhost:3000/users/1 with these body {name:aymen, email:ga_announ@esi.dz}` edit the first user
 - DELETE: http://localhost:3000/users/1` delete the first user
