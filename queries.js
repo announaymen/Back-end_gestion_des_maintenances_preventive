@@ -20,9 +20,27 @@ const getUserById = (request, response) => {
     if (error) {
       throw error;
     }
-    response.status(200).json(results.rows);
+    response.status(200).send("hheheheh");
+    //response.status(200).json(results.rows);
   });
 };
+const auth = (request, response) => {
+  const { name, email } = request.body;
+  pool.query(
+    "SELECT * FROM users WHERE name = $1 and email = $2",
+    [name, email],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      if (results.rowCount < 1) {
+        response.status(200).send("authentification feild");
+      } else response.status(200).send("signed in!!");
+      //response.status(200).json(results.rows);
+    }
+  );
+};
+
 const createUser = (request, response) => {
   const { name, email } = request.body;
   pool.query(
@@ -71,6 +89,7 @@ const deleteUser = (request, response) => {
 };
 
 module.exports = {
+  auth,
   getUsers,
   getUserById,
   createUser,
