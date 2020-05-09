@@ -29,6 +29,7 @@ const auth = (request, response) => {
   pool.query(
     "SELECT * FROM users WHERE name = $1 and email = $2",
     [name, email],
+
     (error, results) => {
       if (error) {
         throw error;
