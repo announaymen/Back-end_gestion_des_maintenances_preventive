@@ -16,11 +16,10 @@ app.get("/", (request, response) => {
 });
 app.post("/employees", db.createEmployee);
 app.post("/auth", db.auth);
-app.get("/users", db.getUsers);
-app.get("/users/:id", db.getUserById);
-app.post("/users", db.createUser);
-app.put("/users/:id", db.updateUser);
-app.delete("/users/:id", db.deleteUser);
+app.get("/employees", db.getEmployees);
+app.get("/employees/:id", db.getEmployeeById);
+app.put("/employees/:id", db.updateEmployee);
+app.delete("/employees/:id", db.deleteEmployee);
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });

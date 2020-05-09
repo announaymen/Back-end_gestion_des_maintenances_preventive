@@ -1,3 +1,4 @@
+//create connection
 const Pool = require("pg").Pool;
 const emp = require("./models/employee");
 const pool = new Pool({
@@ -7,28 +8,24 @@ const pool = new Pool({
   password: "Nr2MB7TkmKVyVJkEv68R7kp7tcGCzPHw",
   port: 5432,
 });
-
+//gestion des employee
 const createEmployee = (request, response) => {
-  emp.createEmployee(request, response);
+  emp.createEmployee(request, response, pool);
 };
-const getUsers = (request, response) => {
-  pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).json(results.rows);
-  });
+const updateEmployee = (request, response) => {
+  emp.updateEmployee(request, response, pool);
 };
-const getUserById = (request, response) => {
-  const id = parseInt(request.params.id);
-  pool.query("SELECT * FROM users WHERE id = $1", [id], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).send("hheheheh");
-    //response.status(200).json(results.rows);
-  });
+const getEmployees = (request, response) => {
+  emp.getEmployees(request, response, pool);
 };
+const getEmployeeById = (request, response) => {
+  emp.getEmployeeById(request, response, pool);
+};
+
+const deleteEmployee = (request, response) => {
+  emp.deleteEmployee(request, response, pool);
+};
+//authentification
 const auth = (request, response) => {
   const { email, password } = request.body;
   pool.query(
@@ -44,59 +41,11 @@ const auth = (request, response) => {
     }
   );
 };
-
-const createUser = (request, response) => {
-  const { name, email } = request.body;
-  pool.query(
-    "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *",
-    [name, email],
-    (error, results) => {
-      if (error) {
-        throw error;
-      } else if (!Array.isArray(results.rows) || results.rows.length < 1) {
-        throw error;
-      }
-      response.status(201).send(`User added with ID: ${results.rows[0].id}`);
-    }
-  );
-};
-const updateUser = (request, response) => {
-  const id = parseInt(request.params.id);
-  const { name, email } = request.body;
-  pool.query(
-    "UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING *",
-    [name, email, id],
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      if (typeof results.rows == "undefined") {
-        response.status(404).send(`Resource not found`);
-      } else if (Array.isArray(results.rows) && results.rows.length < 1) {
-        response.status(404).send(`User not found`);
-      } else {
-        response
-          .status(200)
-          .send(`User modified with ID: ${results.rows[0].id}`);
-      }
-    }
-  );
-};
-const deleteUser = (request, response) => {
-  const id = parseInt(request.params.id);
-  pool.query("DELETE FROM users WHERE id = $1", [id], (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).send(`User deleted with ID: ${id}`);
-  });
-};
 module.exports = {
   createEmployee,
   auth,
-  getUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
+  getEmployees,
+  getEmployeeById,
+  deleteEmployee,
+  updateEmployee,
 };

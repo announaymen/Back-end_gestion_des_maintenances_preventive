@@ -10,11 +10,69 @@ npm install
 node index.js
 ```
 
-## Commands
+## APIs
 
-- GET: http://localhost:3000/users` show you all users
-- GET: http://localhost:3000/users/1` show first user
-- POST: http://localhost:3000/auth with these body {"email":"ga_announ@esi.dz", "password":"openpgpwd"} => signed in or field according to the existing of the user
-- POST: http://localhost:3000/users with these body {name:aymen, email:ga_announ@esi.dz} ` add user
-- PUT: " http://localhost:3000/users/1 with these body {name:aymen, email:ga_announ@esi.dz}` edit the first user
-- DELETE: http://localhost:3000/users/1` delete the first user
+# gestion des employees
+
+- show you all employees
+
+```bash
+ GET: http://localhost:3000/employees
+```
+
+- show first employee
+
+```bash
+GET: http://localhost:3000/employees/1
+```
+
+- create employee
+
+```bash
+http://localhost:3000/employees  with this body
+{
+        "id_poste": "1",
+        "id_parc": "1                   ",
+        "nom": "announ",
+        "prenom": "aymen",
+        "date_embauche": "2016-05-31T23:00:00.000Z",
+        "email": "ga_announ@esi.dz",
+        "password": "openpdpwd",
+        "nss": "1",
+        "id_chef": null
+    }
+```
+
+- Update first employee
+
+```bash
+PUT: http://localhost:3000/employees/1 with this body
+
+{
+        "id_poste": "1",
+        "id_parc": "1                   ",
+        "nom": "bendaho",
+        "prenom": "riyadh",
+        "date_embauche": "2016-05-31T23:00:00.000Z",
+        "email": "ga_announ@esi.dz",
+        "password": "openpdpwd",
+        "nss": "1",
+        "id_chef": null
+    }
+```
+
+- Delete first employee
+
+```bash
+DELETE: http://localhost:3000/employees/1
+```
+
+- Authentification
+
+```bash
+POST: http://localhost:3000/auth with these body
+{
+    "email":"ga_announ@esi.dz",
+     "password":"openpgpwd"
+}
+```
