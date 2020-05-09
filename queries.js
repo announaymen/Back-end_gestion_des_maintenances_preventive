@@ -1,4 +1,5 @@
 const Pool = require("pg").Pool;
+const emp = require("./models/employee");
 const pool = new Pool({
   user: "duqnlvru",
   host: "balarama.db.elephantsql.com",
@@ -6,6 +7,10 @@ const pool = new Pool({
   password: "Nr2MB7TkmKVyVJkEv68R7kp7tcGCzPHw",
   port: 5432,
 });
+
+const createEmployee = (request, response) => {
+  emp.createEmployee(request, response);
+};
 const getUsers = (request, response) => {
   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
     if (error) {
@@ -25,19 +30,17 @@ const getUserById = (request, response) => {
   });
 };
 const auth = (request, response) => {
-  const { name, email } = request.body;
+  const { email, password } = request.body;
   pool.query(
-    "SELECT * FROM users WHERE name = $1 and email = $2",
-    [name, email],
-
+    "SELECT * FROM employee WHERE email = $1 and password = $2",
+    [email, password],
     (error, results) => {
       if (error) {
-        throw error;
+        response.status(200).send(error);
       }
       if (results.rowCount < 1) {
         response.status(200).send("authentification feild");
       } else response.status(200).send("signed in!!");
-      //response.status(200).json(results.rows);
     }
   );
 };
@@ -88,8 +91,8 @@ const deleteUser = (request, response) => {
     response.status(200).send(`User deleted with ID: ${id}`);
   });
 };
-
 module.exports = {
+  createEmployee,
   auth,
   getUsers,
   getUserById,
