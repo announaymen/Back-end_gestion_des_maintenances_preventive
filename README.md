@@ -1,7 +1,7 @@
 "# Backend_gestion_des_maintenances_preventives"
 Create, read, update, delete in a Node.js app with an Express server and Postgres database.
 
-## Installation
+# **Installation**
 
 ```bash
 git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git
@@ -10,23 +10,23 @@ npm install
 node index.js
 ```
 
-## APIs
+# <u>APIs</u>
 
-# gestion des employees
+## <I> Gestion des employees</I>
 
-- show you all employees
+- ***Show you all employees***
 
 ```bash
  GET: http://localhost:3000/employees
 ```
 
-- show first employee
+- ***Show first employee***
 
 ```bash
 GET: http://localhost:3000/employees/1
 ```
 
-- create employee
+- ***Create employee***
 
 ```bash
 http://localhost:3000/employees  with this body
@@ -43,7 +43,7 @@ http://localhost:3000/employees  with this body
     }
 ```
 
-- Update first employee
+- ***Update first employee***
 
 ```bash
 PUT: http://localhost:3000/employees/1 with this body
@@ -61,13 +61,13 @@ PUT: http://localhost:3000/employees/1 with this body
     }
 ```
 
-- Delete first employee
+- ***Delete first employee***
 
 ```bash
 DELETE: http://localhost:3000/employees/1
 ```
 
-- Authentification
+- ***Authentification***
 
 ```bash
 POST: http://localhost:3000/auth with these body
