@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const app = express();
 const db = require("./queries");
 const port = process.env.PORT || 3000;
-
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -16,7 +15,7 @@ app.use(
 });*/
 app.get("/", function (req, res) {
   console.log("app is running !!!!!!!!!");
-  res.json({ info: "Node.js, Express, and Postgres API" });
+  res.send("<h1> this is the backend of the application</h1>");
 });
 app.post("/employees", db.createEmployee);
 app.post("/auth", db.auth);
