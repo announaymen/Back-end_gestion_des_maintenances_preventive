@@ -12,7 +12,7 @@ Create, read, update, delete in a Node.js app with an Express server and Postgre
 $ git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git
 $ cd Back-end_gestion_des_maintenances_preventive
 $ npm install
-// to run server execute
+// to run the server execute
 $ node index.js
  <or>
 $ npm run SmartOvationAPI
@@ -39,7 +39,7 @@ GET: https://gestion-maintenaces.herokuapp.com/employees/1
 - **_Create employee_**
 
 ```bash
-https://gestion-maintenaces.herokuapp.com/employees  with this body
+POST: https://gestion-maintenaces.herokuapp.com/employees  with this body
 {
         "id_poste": "1",
         "id_parc": "1                   ",
