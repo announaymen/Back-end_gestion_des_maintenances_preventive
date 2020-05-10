@@ -8,7 +8,7 @@ const pool = new Pool({
   password: "Nr2MB7TkmKVyVJkEv68R7kp7tcGCzPHw",
   port: 5432,
 });
-//gestion des employee
+//*********************gestion des employee ***************************************
 const createEmployee = (request, response) => {
   emp.createEmployee(request, response, pool);
 };
@@ -21,11 +21,24 @@ const getEmployees = (request, response) => {
 const getEmployeeById = (request, response) => {
   emp.getEmployeeById(request, response, pool);
 };
-
 const deleteEmployee = (request, response) => {
   emp.deleteEmployee(request, response, pool);
 };
-//authentification
+//********************** gestion des pieces */************************************* */
+
+//********************** gestion d'huile */************************************* */
+
+/*********************** gestion des véhicules*********************************** */
+
+/*********************** gestion des maintenance ******************************** */
+
+/*********************** gestion des notification ******************************* */
+
+/***********************gestion des publication ********************************* */
+
+/***********************gestion des véhicules************************************ */
+
+//**************************authentification****************************************
 const auth = (request, response) => {
   const { email, password } = request.body;
   pool.query(

@@ -105,6 +105,7 @@ const deleteEmployee = (request, response, pool) => {
     }
   );
 };
+
 module.exports = {
   getEmployees,
   createEmployee,
