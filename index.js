@@ -11,8 +11,11 @@ app.use(
   })
 );
 // routes
-app.get("/", (request, response) => {
+/*app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
+});*/
+app.get("/", function (req, res) {
+  res.redirect("/employees");
 });
 app.post("/employees", db.createEmployee);
 app.post("/auth", db.auth);
