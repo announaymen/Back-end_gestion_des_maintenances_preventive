@@ -14,22 +14,22 @@ node index.js
 
 ## <I> Gestion des employees</I>
 
-- ***Show you all employees***
+- **_Show you all employees_**
 
 ```bash
- GET: http://localhost:3000/employees
+ GET: https://gestion-maintenaces.herokuapp.com/employees
 ```
 
-- ***Show first employee***
+- **_Show first employee_**
 
 ```bash
-GET: http://localhost:3000/employees/1
+GET: https://gestion-maintenaces.herokuapp.com/employees/1
 ```
 
-- ***Create employee***
+- **_Create employee_**
 
 ```bash
-http://localhost:3000/employees  with this body
+https://gestion-maintenaces.herokuapp.com/employees  with this body
 {
         "id_poste": "1",
         "id_parc": "1                   ",
@@ -43,10 +43,10 @@ http://localhost:3000/employees  with this body
     }
 ```
 
-- ***Update first employee***
+- **_Update first employee_**
 
 ```bash
-PUT: http://localhost:3000/employees/1 with this body
+PUT: https://gestion-maintenaces.herokuapp.com/1 with this body
 
 {
         "id_poste": "1",
@@ -61,16 +61,16 @@ PUT: http://localhost:3000/employees/1 with this body
     }
 ```
 
-- ***Delete first employee***
+- **_Delete first employee_**
 
 ```bash
-DELETE: http://localhost:3000/employees/1
+DELETE: https://gestion-maintenaces.herokuapp.com/employees/1
 ```
 
-- ***Authentification***
+- **_Authentification_**
 
 ```bash
-POST: http://localhost:3000/auth with these body
+POST: https://gestion-maintenaces.herokuapp.com/auth with these body
 {
     "email":"ga_announ@esi.dz",
      "password":"openpgpwd"
