@@ -6,7 +6,7 @@ Create, read, update, delete in a Node.js app with an Express server and Postgre
 
 ## <u>Installation</u>
 
-- **No installation is required to use APIs**
+- #### **No installation is required to use APIs**
 
 ---
 
