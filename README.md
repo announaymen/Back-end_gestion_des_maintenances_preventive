@@ -4,7 +4,7 @@ Create, read, update, delete in a Node.js app with an Express server and Postgre
 # **Installation**
 
 - **No installation is required to use APIs**
-- **To run APIs on your localhost, execute the following commandes**
+- **If you want to run APIs on your localhost, execute the following commandes**
 
   _ps: before executing these commandes please make sure that you have node.js installed on your machine_
 
