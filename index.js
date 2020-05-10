@@ -14,8 +14,8 @@ app.use(
 /*app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
 });*/
-app.get("", function (req, res) {
-  res.redirect("/employees");
+app.get("/", function (req, res) {
+  console.log("app is running !!!!!!!!!");
 });
 app.post("/employees", db.createEmployee);
 app.post("/auth", db.auth);
