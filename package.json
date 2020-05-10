@@ -4,10 +4,10 @@
   "name": "node-api-postgres",
   "version": "1.0.0",
   "description": "RESTful API with Node.js, Express, and PostgreSQL",
-  "main": "index.js",
+  "main": "node.js",
   "license": "NON",
   "scripts": {
-    "start": "node index.js"
+    "start": "node node.js"
   },
   "dependencies": {
     "express": "^4.16.3",
