@@ -3,15 +3,21 @@ Create, read, update, delete in a Node.js app with an Express server and Postgre
 
 # **Installation**
 
-- No installation is required to use APIs
-- To run APIs on your localhost, execute the following commandes
-  _ps: make sure that you have node js installed on your machine)_
+- **No installation is required to use APIs**
+- **To run APIs on your localhost, execute the following commandes**
+
+  _ps: before executing these commandes please make sure that you have node.js installed on your machine_
 
 ```bash
-git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git
-cd Back-end_gestion_des_maintenances_preventive
-npm install
-node index.js
+$ git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git
+$ cd Back-end_gestion_des_maintenances_preventive
+$ npm install
+// to run server execute
+$ node index.js
+ <or>
+$ npm run SmartOvationAPI
+ <or>
+$ npm run start
 ```
 
 # <u>APIs</u>

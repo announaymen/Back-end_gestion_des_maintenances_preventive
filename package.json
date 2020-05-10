@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "NON",
   "scripts": {
+    "SmartOvationAPI": "node index.js",
     "start": "node index.js"
   },
   "dependencies": {
