@@ -29,7 +29,9 @@ app.delete("/employees/:id", db.deleteEmployee);
 /*****************Gestion des pieces**********************************/
 app.put("/pieces/:id", db.updatePiece);
 app.get("/pieces", db.getPieces);
-
+app.post("/pieces", db.createPiece);
+app.get("/pieces/:id", db.getPieceById);
+app.delete("/pieces/:id", db.deletePiece);
 /*************************** *****************************************/
 app.listen(port, () => {
   console.log(`App running on porttt ${port}.`);

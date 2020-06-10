@@ -34,9 +34,7 @@ const updateEmployee = (request, response, pool) => {
       } else if (Array.isArray(results.rows) && results.rows.length < 1) {
         response.status(404).send(`User not found`);
       } else {
-        response
-          .status(200)
-          .send(`User modified with ID: ${results.rows[0].id}`);
+        response.status(200).json({ Message: "Modifié avec succès" });
       }
     }
   );
@@ -64,7 +62,7 @@ const createEmployee = (request, response, pool) => {
       } else if (!Array.isArray(results.rows) || results.rows.length < 1) {
         response.status(201).send("error 2" + error);
       }
-      response.status(201).send(`User added with id:${results.rows[0].id}`);
+      response.status(200).json({ Message: "crée avec succès" });
     }
   );
 };
@@ -101,7 +99,7 @@ const deleteEmployee = (request, response, pool) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`User deleted with ID: ${id}`);
+      response.status(200).json({ Message: "supprimé avec succès" });
     }
   );
 };

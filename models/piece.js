@@ -32,37 +32,32 @@ const updatePiece = (request, response, pool) => {
       } else if (Array.isArray(results.rows) && results.rows.length < 1) {
         response.status(404).send(`User not found`);
       } else {
-        response
-          .status(200)
-          .send(`piece modified with ID: ${results.rows[0].id}`);
+        response.status(200).json({ Message: "modifié avec succès" });
       }
     }
   );
 };
-const createEmployee = (request, response, pool) => {
+const createPiece = (request, response, pool) => {
   // response.status(201).send("employee created");
   const {
-    poste,
-    parc,
-    nom,
-    prenom,
-    date_embauche,
-    email,
-    password,
-    nss,
-    chef,
+    id_fournisseur,
+    reference,
+    duree_vie,
+    fabriqueur,
+    prix,
+    nb_ex_dispo,
   } = request.body;
 
   pool.query(
-    "INSERT INTO employee ( id_poste, id_parc, nom, prenom, date_embauche, email, password, nss, id_chef) VALUES ($1, $2,$3, $4,$5, $6,$7, $8, $9) RETURNING *",
-    [poste, parc, nom, prenom, date_embauche, email, password, nss, chef],
+    "INSERT INTO piece ( id_fournisseur, reference, duree_vie, fabriqueur, prix, nb_ex_dispo) VALUES ($1, $2,$3, $4,$5, $6) RETURNING *",
+    [id_fournisseur, reference, duree_vie, fabriqueur, prix, nb_ex_dispo],
     (error, results) => {
       if (error) {
         response.status(201).send("error 1" + error);
       } else if (!Array.isArray(results.rows) || results.rows.length < 1) {
         response.status(201).send("error 2" + error);
       }
-      response.status(201).send(`User added with id:${results.rows[0].id}`);
+      response.status(200).json({ Message: "crée avec succès" });
     }
   );
 };
@@ -74,10 +69,10 @@ const getPieces = (request, response, pool) => {
     response.status(200).json(results.rows);
   });
 };
-const getEmployeeById = (request, response, pool) => {
+const getPieceById = (request, response, pool) => {
   const id = parseInt(request.params.id);
   pool.query(
-    "SELECT * FROM employee WHERE id_employee = $1",
+    "SELECT * FROM piece WHERE id_piece = $1",
     [id],
     (error, results) => {
       if (error) {
@@ -87,24 +82,24 @@ const getEmployeeById = (request, response, pool) => {
     }
   );
 };
-const deleteEmployee = (request, response, pool) => {
+const deletePiece = (request, response, pool) => {
   const id = parseInt(request.params.id);
   pool.query(
-    "DELETE FROM employee WHERE id_employee = $1",
+    "DELETE FROM piece WHERE id_piece = $1",
     [id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`User deleted with ID: ${id}`);
+      response.status(200).json({ Message: "supprimé avec succès" });
     }
   );
 };
 
 module.exports = {
   getPieces,
-  //createEmployee,
+  createPiece,
   updatePiece,
-  // getEmployeeById,
-  //deleteEmployee,
+  getPieceById,
+  deletePiece,
 };

@@ -32,6 +32,15 @@ const updatePiece = (request, response) => {
 const getPieces = (request, response) => {
   piece.getPieces(request, response, pool);
 };
+const createPiece = (request, response) => {
+  piece.createPiece(request, response, pool);
+};
+const getPieceById = (request, response) => {
+  piece.getPieceById(request, response, pool);
+};
+const deletePiece = (request, response) => {
+  piece.deletePiece(request, response, pool);
+};
 //********************** gestion d'huile */************************************* */
 
 /*********************** gestion des véhicules*********************************** */
@@ -69,6 +78,9 @@ module.exports = {
   deleteEmployee,
   updateEmployee,
   /**************** pieces ************/
+  createPiece,
   updatePiece,
   getPieces,
+  getPieceById,
+  deletePiece,
 };
