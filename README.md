@@ -11,9 +11,10 @@ Create, read, update, delete in a Node.js app with an Express server and Postgre
 ---
 
 <small><small><small>
-_If you want to run APIs on your **localhost**, execute the following commandes_
 
-_ps: before executing these commandes please make sure that you have node.js installed on your machine_
+> _If you want to run APIs on your **localhost**, execute the following commandes_
+
+> _ps: before executing these commandes please make sure that you have node.js installed on your machine_
 
 ```bash
 $ git clone https://github.com/announaymen/Back-end_gestion_des_maintenances_preventive.git

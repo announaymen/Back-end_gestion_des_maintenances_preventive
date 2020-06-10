@@ -1,6 +1,7 @@
 //create connection
 const Pool = require("pg").Pool;
 const emp = require("./models/employee");
+const piece = require("./models/piece");
 const pool = new Pool({
   user: "duqnlvru",
   host: "balarama.db.elephantsql.com",
@@ -25,7 +26,12 @@ const deleteEmployee = (request, response) => {
   emp.deleteEmployee(request, response, pool);
 };
 //********************** gestion des pieces */************************************* */
-
+const updatePiece = (request, response) => {
+  piece.updatePiece(request, response, pool);
+};
+const getPieces = (request, response) => {
+  piece.getPieces(request, response, pool);
+};
 //********************** gestion d'huile */************************************* */
 
 /*********************** gestion des véhicules*********************************** */
@@ -55,10 +61,14 @@ const auth = (request, response) => {
   );
 };
 module.exports = {
+  /********employees**************/
   createEmployee,
   auth,
   getEmployees,
   getEmployeeById,
   deleteEmployee,
   updateEmployee,
+  /**************** pieces ************/
+  updatePiece,
+  getPieces,
 };
