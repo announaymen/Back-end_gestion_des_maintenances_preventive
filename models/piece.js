@@ -2,6 +2,7 @@
 	id_fournisseur, reference, duree_vie, fabriqueur, prix, nb_ex_dispo)
 	VALUES ( 1 , '1', 5456, 'fab1', 542, 20);
 */
+var shape = require("shape-json");
 const updatePiece = (request, response, pool) => {
   const id_piece = parseInt(request.params.id);
   const {
@@ -62,23 +63,61 @@ const createPiece = (request, response, pool) => {
   );
 };
 const getPieces = (request, response, pool) => {
-  pool.query("SELECT * FROM piece ORDER BY id_piece ASC", (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT  * FROM piece NATURAL join fournisseur   ORDER BY id_piece ASC",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      const piece = results.rows;
+      var scheme = {
+        "$group[pieces](id_piece)": {
+          id_piece: "id_piece",
+          reference: "reference",
+          duree_vie: "duree_vie",
+          fabriqueur: "fabriqueur",
+          prix: "prix",
+          nb_ex_dispo: "nb_ex_dispo",
+          "$group[fournisseur](id_fournisseur)": {
+            id_fournisseur: "id_fournisseur",
+            nom: "nom",
+            date_debut_contrat: "date_debut_contrat",
+            adresse: "adresse",
+          },
+        },
+      };
+      console.log(shape.parse(piece, scheme));
+      response.status(200).json(shape.parse(piece, scheme));
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 const getPieceById = (request, response, pool) => {
   const id = parseInt(request.params.id);
   pool.query(
-    "SELECT * FROM piece WHERE id_piece = $1",
+    "SELECT  * FROM piece NATURAL join fournisseur WHERE id_piece = $1 ORDER BY id_piece ASC",
     [id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).json(results.rows);
+      const piece = results.rows;
+      var scheme = {
+        id_piece: "id_piece",
+        reference: "reference",
+        duree_vie: "duree_vie",
+        fabriqueur: "fabriqueur",
+        prix: "prix",
+        nb_ex_dispo: "nb_ex_dispo",
+        fournisseur: {
+          id_fournisseur: "id_fournisseur",
+          nom: "nom",
+          adresse: "adresse",
+          date_debut_contrat: "date_debut_contrat",
+        },
+      };
+      console.log(shape.parse(piece, scheme));
+      //response.status(200).json(piece);
+      response.status(200).json(shape.parse(piece, scheme));
     }
   );
 };
@@ -95,7 +134,6 @@ const deletePiece = (request, response, pool) => {
     }
   );
 };
-
 module.exports = {
   getPieces,
   createPiece,
