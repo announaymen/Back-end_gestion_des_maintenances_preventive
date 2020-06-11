@@ -32,7 +32,9 @@ app.get("/pieces", db.getPieces);
 app.post("/pieces", db.createPiece);
 app.get("/pieces/:id", db.getPieceById);
 app.delete("/pieces/:id", db.deletePiece);
-/*************************** *****************************************/
+/***************** gestion des vehicules*****************************/
+app.get("/vehicules", db.getVehicules);
+/********************** */
 app.listen(port, () => {
   console.log(`App running on porttt ${port}.`);
 });
