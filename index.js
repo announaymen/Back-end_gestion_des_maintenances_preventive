@@ -5,7 +5,8 @@ const app = express();
 const db = require("./queries");
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
-app.use(
+app.use(//
+
   bodyParser.urlencoded({
     extended: true,
   })
